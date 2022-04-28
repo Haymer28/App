@@ -25,7 +25,7 @@
         <a class="nav-link" href="">Inicio<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="formulario.jsp">Carrito Compras</a>
+        <a class="nav-link" href="">Carrito Compras</a>
       </li>
       <li class="nav-item">
           <a class="nav-link" href="Controlador?accion=Carro">Carro</a>

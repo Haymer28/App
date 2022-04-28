@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import modelo.Carrito;
 import modelo.Producto;
 import modelo.ProductoDAO;
 
@@ -24,6 +25,12 @@ public class Controlador extends HttpServlet {
     
     ProductoDAO dao = new ProductoDAO();
     List<Producto> p = new ArrayList<>();
+    Producto pro = new Producto();
+    
+    List<Carrito> listaCarrito = new ArrayList<>();
+    int item;
+    double totalPagar=0.0;
+    int cantidad=1;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,9 +43,28 @@ public class Controlador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             String accion=request.getParameter("accion");
-            p = dao.Listar();
+            p= dao.Listar();
             switch (accion){
-                case "ejemplo":
+                case "AgregarCarrito":
+                    int idp = Integer.parseInt(request.getParameter("id"));
+                    pro = dao.listarId(idp);
+                    item=item+1;
+                    Carrito car = new Carrito();
+                    car.setItem(item);
+                    car.setIdProducto(pro.getId());
+                    car.setNombres(pro.getNom());
+                    car.setDescripcion(pro.getDes());
+                    car.setPrecioCompra(pro.getPrecio());
+                    car.setCantidad(cantidad);
+                    car.setSubtotal(cantidad*pro.getPrecio());
+                    listaCarrito.add(car);
+                    request.setAttribute("contador",listaCarrito.size());
+                    request.getRequestDispatcher("Controlador?accion=carrito").forward(request, response);
+                    break;
+                case "Contenido":
+                    totalPagar=0.0;
+                    request.setAttribute("carrito", listaCarrito);
+                    request.getRequestDispatcher("contenido.jsp").forward(request, response);
                     break;
                 default:
                     request.setAttribute("productos", p);

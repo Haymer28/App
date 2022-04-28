@@ -45,7 +45,7 @@
                             <label><%= regM.getDes()%></label>
                             <div>
                                 <br>
-                                <a href="" class="btn btn-outline-success">Agregar Producto</a>
+                                <a href="Controlador?accion=AgregarCarrito&id=<%= regM.getId()%>" class="btn btn-outline-success">Agregar al Carrito</a>
                                 <a href="" class="btn btn-danger">Comprar</a>
                             </div>
                         </div>
