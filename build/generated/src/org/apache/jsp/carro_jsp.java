@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class carro_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -71,7 +71,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n");
       out.write("    <ul class=\"navbar-nav mr-auto\">\r\n");
       out.write("      <li class=\"nav-item active\">\r\n");
-      out.write("        <a class=\"nav-link\" href=\"\">Inicio<span class=\"sr-only\">(current)</span></a>\r\n");
+      out.write("        <a class=\"nav-link\" href=\"Controlador?accion=home\">Inicio<span class=\"sr-only\">(current)</span></a>\r\n");
       out.write("      </li>\r\n");
       out.write("      <li class=\"nav-item\">\r\n");
       out.write("        <a class=\"nav-link\" href=\"formulario.jsp\">Carrito Compras</a>\r\n");
@@ -136,7 +136,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
     _jspx_th_c_forEach_0.setParent(null);
     _jspx_th_c_forEach_0.setVar("p");
-    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${p}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${productos}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
     try {
       int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();

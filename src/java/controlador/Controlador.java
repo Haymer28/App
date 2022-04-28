@@ -8,6 +8,7 @@ package controlador;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -22,7 +23,7 @@ import modelo.ProductoDAO;
 public class Controlador extends HttpServlet {
     
     ProductoDAO dao = new ProductoDAO();
-    Producto p = new Producto();
+    List<Producto> p = new ArrayList<>();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,18 +35,14 @@ public class Controlador extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Controlador</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Controlador at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            String accion=request.getParameter("accion");
+            p = dao.Listar();
+            switch (accion){
+                case "ejemplo":
+                    break;
+                default:
+                    request.setAttribute("productos", p);
+                    request.getRequestDispatcher("carrito.jsp").forward(request, response);
         }
     }
 
@@ -75,7 +72,7 @@ public class Controlador extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        /**
         String accion=request.getParameter("accion");
         switch(accion){
             case "Listar":
@@ -105,9 +102,9 @@ public class Controlador extends HttpServlet {
                 break;
             default:
                 request.getRequestDispatcher("Controlador?accion=Listar").forward(request, response);
-                break;
+                break;*/
         }
-    }
+    
     
     
     

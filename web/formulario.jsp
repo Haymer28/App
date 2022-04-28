@@ -14,13 +14,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>FORM</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     </head>
     <body>
+        <%@include file="Detalles/nav-bar.jsp"%>
     <center>
+        <br>
         <div>
             <form action="Controlador" method="POST">
-                <input type="submit" name="accion" value="Listar">
-                <input type="submit" name="accion" value="Nuevo">
+                <input type="submit" name="accion" value="Listar" class="btn btn-success">
+                <input type="submit" name="accion" value="Nuevo" class="btn btn-primary">
             </form>
             <hr>
             <table border=1>
@@ -52,8 +56,8 @@
                         <td><%= regM.getStock()%></td>
                         <td>
                         <form action="Controlador" method="POST">
-                            <input type="submit" name="accion" value="Editar">
-                            <input type="submit" name="accion" value="Eliminar">
+                            <input type="submit" name="accion" value="Editar" class="btn btn-dark">
+                            <input type="submit" name="accion" value="Eliminar" class="btn btn-danger">
                         </form> 
                         </td>
                     </tr>

@@ -64,7 +64,7 @@ public class ProductoDAO {
             ps=con.prepareStatement(sql);
             rs=ps.executeQuery();
             if(rs.next()){
-                inputStream=rs.getBinaryStream("Foto");
+                inputStream=rs.getBinaryStream("Foto");  
             }
             bufferedInputStream = new BufferedInputStream(inputStream);
             bufferedOutputStream = new BufferedOutputStream(outputStream);
