@@ -23,7 +23,7 @@
                 <input type="submit" name="accion" value="Nuevo">
             </form>
             <hr>
-            <table>
+            <table border=1>
                 
                     <tr>
                         <th>ID PRODUCTO</th>
@@ -46,7 +46,7 @@
                      <tr>
                         <td><%= regM.getId() %></td>
                         <td><%= regM.getNom()%></td>
-                        <td><img src="ControladorIMG?id=<%= regM.getId() %>" width="150" heiht="100"></td>
+                        <td><img src="ControladorIMG?id=<%= regM.getId() %>" style="width: 150px; height: 150px; margin-top: 20px; padding: 15px;"></td>
                         <td><%= regM.getDes()%></td>
                         <td><%= regM.getPrecio()%></td>
                         <td><%= regM.getStock()%></td>

@@ -6,19 +6,19 @@
 package controlador;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import modelo.Producto;
 import modelo.ProductoDAO;
 
-/**
- *
- * @author User1
- */
+@MultipartConfig
 public class Controlador extends HttpServlet {
     
     ProductoDAO dao = new ProductoDAO();
@@ -82,6 +82,25 @@ public class Controlador extends HttpServlet {
                 List<Producto>lista=dao.Listar();
                 request.getSession().setAttribute("lista",lista);
                 request.getRequestDispatcher("formulario.jsp").forward(request, response);
+                break;
+            case "Nuevo":
+                request.getRequestDispatcher("agregar.jsp").forward(request, response);
+                break;
+            case "Guardar":
+                String nom=request.getParameter("Nombres");
+                Part part=request.getPart("Foto");
+                InputStream inputStream=part.getInputStream();
+                String des=request.getParameter("Descripcion");
+                Double cos=Double.parseDouble(request.getParameter("Precio"));
+                int stock= Integer.parseInt(request.getParameter("Stock"));
+                p.setNom(nom);
+                p.setFoto(inputStream);
+                p.setDes(des);
+                p.getPrecio();
+                p.setStock(stock);
+                dao.agregar(p);
+                
+                request.getRequestDispatcher("Controlador?accion=Listar").forward(request, response);
                 break;
             default:
                 request.getRequestDispatcher("Controlador?accion=Listar").forward(request, response);

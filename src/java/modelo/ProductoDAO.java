@@ -76,4 +76,21 @@ public class ProductoDAO {
         }
     }
     
+    public void agregar(Producto p){
+        
+        String sql = "insert in to producto(Nombres, Foto, Descripcion, Precio, Stock)" + "values(?,?,?,?,?)";
+        try {
+            con=cn.getConnection();
+            ps=con.prepareStatement(sql);
+            ps.setString(1, p.getNom());
+            ps.setBlob(2,p.getFoto());
+            ps.setString(3,p.getDes());
+            ps.setDouble(4,p.getPrecio());
+            ps.setInt(5,p.getStock());
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+        
+    }
+    
 }
