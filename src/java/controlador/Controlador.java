@@ -93,14 +93,15 @@ public class Controlador extends HttpServlet {
                 String des=request.getParameter("Descripcion");
                 Double cos=Double.parseDouble(request.getParameter("Precio"));
                 int stock= Integer.parseInt(request.getParameter("Stock"));
+                
                 p.setNom(nom);
                 p.setFoto(inputStream);
                 p.setDes(des);
-                p.getPrecio();
+                p.setPrecio(cos);
                 p.setStock(stock);
                 dao.agregar(p);
                 
-                request.getRequestDispatcher("Controlador?accion=Listar").forward(request, response);
+                request.getRequestDispatcher("formulario.jsp").forward(request, response);
                 break;
             default:
                 request.getRequestDispatcher("Controlador?accion=Listar").forward(request, response);

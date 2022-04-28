@@ -33,7 +33,7 @@
             <label>Stock:</label>
             <input type="text" name="Stock">
             
-            <input type="submit" name="accion" value="guardar">
+            <input type="submit" name="accion" value="Guardar">
             <input type="submit" name="accion" value="Regresar">
             
         </form>
