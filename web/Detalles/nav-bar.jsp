@@ -26,7 +26,7 @@
         <a class="nav-link" href="index.jsp">Inicio<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="Controlador?accion=Contenido"><i class="fas fa-cart-plus">(<label style="color: darkorange;">${contador}</label>)</i>Carrito</a>
+          <a class="nav-link" href="Controlador?accion=Carrito"><i class="fas fa-cart-plus">(<label style="color: darkorange;">${contador}</label>)</i>Carrito</a>
       </li>
       <li class="nav-item">
           <a class="nav-link" href="Controlador?accion=Carro">Carro</a>

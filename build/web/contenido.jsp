@@ -4,6 +4,11 @@
     Author     : User1
 --%>
 
+
+
+
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,7 +28,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="">Inicio<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="index.jsp">Inicio<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
           <a class="nav-link" href="">Seguir Comprando</a>
@@ -50,6 +55,8 @@
 </nav>
         
         <div class="container mt-4">
+            <h2>Carrito</h2>
+            <br>
             <div class="row">
                 <div class="col-sm-8">
                     <table class="table table-hover">
@@ -64,18 +71,24 @@
                                 <th>ACCI&Oacute;N</th>
                             </tr>
                         </thead>
+                         
+                    
                         <tbody>
+                            <c:forEach var="car" items="${carrito}">
                             <tr>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
+                                <td>${car.getItem()}</td>
+                                <td>${car.getNombres()}</td>
+                                <td>${car.getDescripcion()}</td>
+                                <td>${car.getPrecioCompra()}</td>
+                                <td>${car.getCantidad()}</td>
+                                <td>${car.getSubtotal()}</td>
                             </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
                 </div>
+                            
+                        
                 <div class="col-sm-4">
                     <div class="card">
                         <div class="card-header">
