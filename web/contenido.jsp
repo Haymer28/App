@@ -8,6 +8,10 @@
 
 
 
+<%@page import="java.util.List"%>
+<%@page import="modelo.Producto"%>
+<%@page import="modelo.ProductoDAO"%>
+<%@page import="java.util.ListIterator"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -72,19 +76,28 @@
                             </tr>
                         </thead>
                          
-                    
+                             <%
+                        List lis = new ProductoDAO().Listar();
+                        ListIterator list =lis.listIterator();
+                        while (list.hasNext()){
+                            Producto regM = (Producto) list.next();
+                        
+                        %>
                         <tbody>
-                            <c:forEach var="car" items="${carrito}">
+                            
                             <tr>
-                                <td>${car.getItem()}</td>
-                                <td>${car.getNombres()}</td>
-                                <td>${car.getDescripcion()}</td>
-                                <td>${car.getPrecioCompra()}</td>
-                                <td>${car.getCantidad()}</td>
-                                <td>${car.getSubtotal()}</td>
+                                <td><%= regM.getId()%></td>
+                                <td><%= regM.getNom()%></td>
+                                <td><%= regM.getDes()%></td>
+                                <td><%= regM.getPrecio()%></td>
+                                <td><%= regM.getStock()%></td>
+                                <td></td>
                             </tr>
-                            </c:forEach>
+                            
                         </tbody>
+                        <%
+                            }
+                        %>
                     </table>
                 </div>
                             

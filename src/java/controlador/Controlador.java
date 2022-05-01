@@ -56,9 +56,9 @@ public class Controlador extends HttpServlet {
                     car.setDescripcion(pro.getDes());
                     car.setPrecioCompra(pro.getPrecio());
                     car.setCantidad(cantidad);
-                    car.setSubtotal(cantidad*pro.getPrecio());
+                    car.setSubtotal(cantidad * pro.getPrecio());
                     listaCarrito.add(car);
-                    request.setAttribute("contador",listaCarrito.size());
+                    request.setAttribute("contador", listaCarrito.size());
                     request.getRequestDispatcher("Controlador?accion=carrito").forward(request, response);
                     break;
                 case "Carrito":
