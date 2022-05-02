@@ -12,6 +12,14 @@
         <servlet-name>ControladorRegistro</servlet-name>
         <servlet-class>controlador.ControladorRegistro</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistroControl</servlet-name>
+        <servlet-class>controlador.ControladorRegistro</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Validacion</servlet-name>
+        <servlet-class>modelo.Validacion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>ControladorRegistro</servlet-name>
         <url-pattern>/ControladorRegistro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroControl</servlet-name>
+        <url-pattern>/RegistroControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Validacion</servlet-name>
+        <url-pattern>/Validacion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

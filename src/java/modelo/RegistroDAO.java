@@ -9,6 +9,9 @@ import config.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -44,19 +47,34 @@ public class RegistroDAO {
         return resultado;
     } 
     
-    public void agregar(Usuario u){
+    public Usuario validar(String usr, String pss) {
+        //instancia la clase de registro beens ya que tiene constructores y getters and setters
+        Usuario usu = new Usuario();
         
-        String sql = "insert into registro(Nombres, Celular, Correo, Password)" + "values(?,?,?,?";
+        String sql = "Select * from registro where Nombres=? and Password=?";
+        
         try {
-            con=cn.getConnection();
-            ps=con.prepareStatement(sql);
-            ps.setString(1, u.getNombre());
-            ps.setString(2,u.getCelular());
-            ps.setString(3,u.getEmail());
-            ps.setString(4,u.getPass());
-            ps.executeUpdate();
-        } catch (Exception e) {
+            con= cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, usr);
+            ps.setString(2, pss);
+            
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                //aca no es necesario las demas cosas que no son nombres y password
+                //ya que en "select * from etc " solamente se necesita nombres y password claramente
+                
+                usu.setId(rs.getInt("id"));
+                usu.setNombre(rs.getString("Nombres"));
+                usu.setCelular(rs.getString("Celular"));
+                usu.setEmail(rs.getString("Correo"));
+                usu.setPass(rs.getString("Password"));
+                usu.setRol(rs.getString("Rol"));
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        return usu;
     }
 }

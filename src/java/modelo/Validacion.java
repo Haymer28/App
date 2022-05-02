@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador;
+package modelo;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,14 +11,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.RegistroDAO;
-import modelo.Usuario;
 
 /**
  *
  * @author SAMSUNG-PC
  */
-public class ControladorRegistro extends HttpServlet {
+public class Validacion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,41 +27,22 @@ public class ControladorRegistro extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-    Usuario usu = new Usuario();
-    String[] errores = new String [4];
+     Usuario usu = new Usuario();
     RegistroDAO dao = new RegistroDAO();
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         String opcion = request.getParameter("accion");
-        PrintWriter salida = response.getWriter();
-        
-        if (opcion.equals("Registrar")){
-            if (request.getParameter("nombres").toString().length()>0 && 
-                request.getParameter("celular").toString().length()>0 &&
-                request.getParameter("email").toString().length()>0 && 
-                request.getParameter("pass").toString().length()>0)
-                
-            {
-            
-            String nom = request.getParameter("nombres");
-            String cel = request.getParameter("celular");
-            String email = request.getParameter("email");
-            String pass = request.getParameter("pass");
-            
-            usu.setNombre(nom);
-            usu.setCelular(cel);
-            usu.setEmail(email);
-            usu.setPass(pass);
-            
-            dao.insertar(usu);
-            
-            response.sendRedirect("Usuario/valido.jsp");
-            
-            }else{
-            response.sendRedirect("Usuario/index.jsp");
-            }
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Validacion</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Validacion at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -94,13 +73,33 @@ public class ControladorRegistro extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-    }
+          String acc = request.getParameter("accion");
+        if (acc.equals("Ingresar")) {
+            String usr = request.getParameter("txtUsu");
+            String pss = request.getParameter("txtPass");
+            
+            usu = dao.validar(usr, pss);
+           if (usu.getNombre()!=null) {
+                
+            if(usu.getRol().equals("Admin")){
+                request.getSession().setAttribute("Usuario", usu);
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+                }
+            else if(usu.getRol().equals("usuario")){
+          request.getSession().setAttribute("Usuario", usu);
+              request.getRequestDispatcher("Usuario/index.jsp").forward(request, response);
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+            }
+        }
+            else{
+                 request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
+        }
+            else{
+                request.getRequestDispatcher("index.jsp").forward(request, response);   
+        }
+        
+    }
     @Override
     public String getServletInfo() {
         return "Short description";
