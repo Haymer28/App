@@ -59,10 +59,10 @@ public class ControladorRegistro extends HttpServlet {
             
             dao.insertar(usu);
             
-            response.sendRedirect("Usuario/valido.jsp");
+            response.sendRedirect("valido.jsp");
             
             }else{
-            response.sendRedirect("Usuario/index.jsp");
+            response.sendRedirect("index.jsp");
             }
         }
     }

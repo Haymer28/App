@@ -83,11 +83,11 @@ public class Validacion extends HttpServlet {
                 
             if(usu.getRol().equals("Admin")){
                 request.getSession().setAttribute("Usuario", usu);
-                request.getRequestDispatcher("intento.jsp").forward(request, response);
+                request.getRequestDispatcher("administrador.jsp").forward(request, response);
                 }
             else if(usu.getRol().equals("usuario")){
           request.getSession().setAttribute("Usuario", usu);
-              request.getRequestDispatcher("Usuario/index.jsp").forward(request, response);
+              request.getRequestDispatcher("indice.jsp").forward(request, response);
 
             }
         }

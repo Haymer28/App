@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -140,5 +142,27 @@ public class RegistroDAO {
 
         }
         return resultado;
-    } 
+    }
+    public List Listar(){
+        List<Usuario>lista=new ArrayList<>();
+        String sql="select * from registro";
+        try {
+        con=cn.getConnection();
+        ps=con.prepareStatement(sql);
+        rs=ps.executeQuery();
+        while(rs.next()){
+            Usuario u=new Usuario();
+            u.setId(rs.getInt("id"));
+            u.setNombre(rs.getString("Nombres"));
+            u.setCelular(rs.getString("Celular"));
+            u.setEmail(rs.getString("Correo"));
+            u.setPass(rs.getString("Password"));
+            u.setRol(rs.getString("Rol"));
+            lista.add(u);
+        }
+        } catch (Exception e) {
+        }
+        return lista;
+        
+    }
 }

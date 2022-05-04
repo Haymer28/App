@@ -23,22 +23,20 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-          <a class="nav-link" href="Usuario/index.jsp">Inicio<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="indice.jsp">Inicio<span class="sr-only">(current)</span></a>
       </li>
        <li class="nav-item active">
-           <a class="nav-link" href="./Controlador?accion=Carrito"><i class="fas fa-cart-plus">(<label style="color:darkorange;">${contador}</label>)</i>Carrito</a>
+           <a class="nav-link" href="Controlador?accion=Carrito"><i class="fas fa-cart-plus">(<label style="color:darkorange;">${contador}</label>)</i>Carrito</a>
       </li>
     </ul>
      <ul class="navbar-nav">   
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
           Màs opciones
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="Usuario/perfil.jsp">Mi perfil</a>
-              <a class="dropdown-item" href="
-                 ">Cerrar Sesiòn</a>
-        </div>
         </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="perfil.jsp">Mi perfil</a>
+        </div>
       </li>
       </ul>
   </div>

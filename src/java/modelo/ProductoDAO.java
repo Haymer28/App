@@ -29,7 +29,7 @@ public class ProductoDAO {
     ResultSet rs;
     
     public Producto listarId(int id){
-        String sql = "Select * from producto where idProducto"+id;
+        String sql = "Select * from producto where idProducto="+id;
         Producto p = new Producto();
         try {
             con=cn.getConnection();

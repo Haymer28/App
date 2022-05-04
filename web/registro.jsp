@@ -10,11 +10,25 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     </head>
     <body>
-        <%@include file="Usuario/nav-bar.jsp" %>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Online-Pets</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.jsp">Inicio<span class="sr-only">(current)</span></a>
+                    </li>
+
+
+            </div>
+        </nav>
         <br>
         <br>    
         <div class="container registro">
@@ -50,9 +64,9 @@
                     </div>
                 </div>
                 <br>
-                
-              <button type="submit" id="btn" name="accion" value="Registrar" class="btn btn-danger ">Enviar</button>&nbsp;
-                
+
+                <button type="submit" id="btn" name="accion" value="Registrar" class="btn btn-danger ">Enviar</button>&nbsp;
+
 
             </form>
         </div>

@@ -1,14 +1,14 @@
 <%-- 
-    Document   : index
-    Created on : 27/04/2022, 02:09:10 PM
+    Document   : indice
+    Created on : 4/05/2022, 02:13:12 PM
     Author     : User1
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Online Pets</title>
-        <meta charset="UTF-8">
+        <title>Online-Pets</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     </head>
@@ -25,29 +25,21 @@
                         <a class="nav-link" href="">Inicio<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<%-- Controlador?accion=Carro --%>">Acerca de</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Contactos</a>
+                        <a class="nav-link" href="Controlador?accion=Carro">Productos</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">   
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                            Iniciar Sesi&oacute;n
+                            MÃ s opciones
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="registro.jsp">Registrarse</a>
-                            <a class="dropdown-item" href="login.jsp">Iniciar Sesiòn</a>
-                        </div>
-                    </li>  
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="perfil.jsp">Mi perfil</a>
+                            </div>
+                    </li>
                 </ul>
             </div>
         </nav>
-
 
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

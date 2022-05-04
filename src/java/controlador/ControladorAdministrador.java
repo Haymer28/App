@@ -16,9 +16,9 @@ import modelo.Usuario;
 
 /**
  *
- * @author SAMSUNG-PC
+ * @author User1
  */
-public class ControladorUsuario extends HttpServlet {
+public class ControladorAdministrador extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,57 +36,73 @@ public class ControladorUsuario extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         String op = request.getParameter("menu");
+        String op = request.getParameter("menu");
         String opc = request.getParameter("accion");
         
         if (op.equals("Ppal")) {
-            request.getRequestDispatcher("indice.jsp").forward(request, response);
+            request.getRequestDispatcher("administrador.jsp").forward(request, response);
 
         }
         if (op.equals("Usuario")) {
             switch (opc) {
 
                 case "mostrar":
-                    request.getRequestDispatcher("perfil.jsp").forward(request, response);
+                    request.getRequestDispatcher("administrador.jsp").forward(request, response);
                     break;
 
-               
+                case "insertar":
+
+                    String nom = request.getParameter("Nombres");
+                    String cont = request.getParameter("Celular");
+                    String email = request.getParameter("Correo");
+                    String pass = request.getParameter("Password");
+
+                    usu.setNombre(nom);
+                    usu.setCelular(cont);
+                    usu.setEmail(email);
+                    usu.setPass(pass);
+
+                    dao.insertar(usu);
+
+                    request.getRequestDispatcher("usuario.jsp").forward(request, response);
+                    break;
+                default:
+                    throw new AssertionError();
 
                 case "eliminar":
                     idUsr = Integer.parseInt(request.getParameter("id"));
 
                     dao.eliminar(idUsr);
-                    request.getRequestDispatcher("perfil.jsp").forward(request, response);
+                    request.getRequestDispatcher("usuarios.jsp").forward(request, response);
                     break;
 
                 case "carga":
                     idUsr = Integer.parseInt(request.getParameter("id"));
-                    Usuario regB = dao.cargar(idUsr);
-                    request.setAttribute("Usuario", regB);
-                    request.getRequestDispatcher("perfil.jsp").forward(request, response);
+                    Usuario miBeans = dao.cargar(idUsr);
+                    request.setAttribute("usuario", miBeans);
+                    request.getRequestDispatcher("usuarios.jsp").forward(request, response);
                     break;
                     
                 case "modificar":
-
-                    String nom2 = request.getParameter("nombres");
-                    String cont2 = request.getParameter("celular");
-                    String email2 = request.getParameter("correo");
-                    String pass2 = request.getParameter("password");
+                    String nom2 = request.getParameter("Nombres");
+                    String cont2 = request.getParameter("Celular");
+                    String email2 = request.getParameter("Correo");
+                    String pass2 = request.getParameter("Password");
                     usu.setNombre(nom2);
                     usu.setCelular(cont2);
                     usu.setEmail(email2);
                     usu.setPass(pass2);
-                    usu.setId(idUsr);
 
                     usu.setId(idUsr);
                     dao.modificar(usu);
-                    request.setAttribute("Usuario", usu);
-                    request.getRequestDispatcher("perfil.jsp").forward(request, response);
+
+                    request.getRequestDispatcher("usuario.jsp").forward(request, response);
                     break;
+        
                     
             }
-            
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
