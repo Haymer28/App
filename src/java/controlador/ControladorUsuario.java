@@ -47,7 +47,7 @@ public class ControladorUsuario extends HttpServlet {
             switch (opc) {
 
                 case "mostrar":
-                    request.getRequestDispatcher("Usuario/index.jsp").forward(request, response);
+                    request.getRequestDispatcher("Usuario/peril.jsp.jsp").forward(request, response);
                     break;
 
                
@@ -56,20 +56,20 @@ public class ControladorUsuario extends HttpServlet {
                     idUsr = Integer.parseInt(request.getParameter("id"));
 
                     dao.eliminar(idUsr);
-                    request.getRequestDispatcher("Usuario/index.jsp").forward(request, response);
+                    request.getRequestDispatcher("Usuario/perfil.jsp").forward(request, response);
                     break;
 
                 case "carga":
                     idUsr = Integer.parseInt(request.getParameter("id"));
-                    Usuario regM = dao.cargar(idUsr);
-                    request.setAttribute("Usuario", regM);
-                    request.getRequestDispatcher("Usuario/index.jsp").forward(request, response);
+                    Usuario regB = dao.cargar(idUsr);
+                    request.setAttribute("Usuario", regB);
+                    request.getRequestDispatcher("Usuario/perfil.jsp").forward(request, response);
                     break;
                     
                 case "modificar":
 
                     String nom2 = request.getParameter("nombres");
-                    String cont2 = request.getParameter("contacto");
+                    String cont2 = request.getParameter("celular");
                     String email2 = request.getParameter("correo");
                     String pass2 = request.getParameter("password");
                     usu.setNombre(nom2);
@@ -81,7 +81,7 @@ public class ControladorUsuario extends HttpServlet {
                     usu.setId(idUsr);
                     dao.modificar(usu);
                     request.setAttribute("Usuario", usu);
-                    request.getRequestDispatcher("Usuario/index.jsp").forward(request, response);
+                    request.getRequestDispatcher("Usuario/perfil.jsp").forward(request, response);
                     break;
                     
             }

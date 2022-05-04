@@ -38,7 +38,7 @@
                 <div class="col-sm-3 sidebar-col">
                 </div>
                 <div class="col-sm-9 main-col">
-                    <form action="ControladorUsu?menu=Usuario" method="POST"> 
+                    <form action="./ControladorUsuario?menu=Usuario" method="POST"> 
                         <div class="form-group d-flex">
 
                             <div class="col-sm-3">
@@ -76,8 +76,8 @@
                             <th>Nombres</th>
                             <th>Contacto</th>
                             <th>Correo</th>
+                            <th>Password</th>
                             <th>Rol</th>
-                            <th></th>
                         </tr>
                         <%
                             Usuario usu = new Usuario();
@@ -88,9 +88,10 @@
                             <td>${Usuario.getNombre()}</td>
                             <td>${Usuario.getCelular()}</td>
                             <td>${Usuario.getEmail()}</td>
+                            <td>${Usuario.getPass()}</td>
                             <td>${Usuario.getRol()}</td>
 
-                            <td><center><a class="btn btn-warning" href="ControladorUsu?menu=Usuario&accion=carga&id=${Usuario.getId()}">Actualizar</a></center></td>
+                            <td><center><a class="btn btn-warning" href="../ControladorUsuario?menu=Usuario&accion=carga&id=${Usuario.getId()}">Actualizar</a></center></td>
                         </tr>
                     </table>
 
