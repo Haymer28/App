@@ -26,26 +26,19 @@
         <a class="nav-link" href="index.jsp">Inicio<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="">Contactenos</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" href="../Controlador?accion=Carro">Carrito de Compras</a>
+          <a class="nav-link" href="../Controlador?accion=Carro">Productos</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
       <ul class="navbar-nav">   
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-          Iniciar Sesi&oacute;n
-        </a>
+          Màs opciones
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="registro.jsp">Registrarse</a>
-              <a class="dropdown-item" href="">Iniciar Sesión</a>
+            <a class="dropdown-item" href="perfil.jsp">Mi perfil</a>
+            <a class="dropdown-item" href="">Cerrar Sesiòn</a>
         </div>
-      </li>  
+        </a>
+      </li>
       </ul>
   </div>
 </nav>

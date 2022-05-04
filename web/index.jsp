@@ -25,10 +25,13 @@
         <a class="nav-link" href="">Inicio<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">Contactenos</a>
+        <a class="nav-link" href="">Productos</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="Controlador?accion=Carro">Carro</a>
+          <a class="nav-link" href="<%-- Controlador?accion=Carro --%>">Acerca de</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="">Contactos</a>
       </li>
     </ul>
       <ul class="navbar-nav">   

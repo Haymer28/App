@@ -72,7 +72,7 @@ public class Validacion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
           String acc = request.getParameter("accion");
         if (acc.equals("Ingresar")) {
             String usr = request.getParameter("txtUsu");
@@ -83,7 +83,7 @@ public class Validacion extends HttpServlet {
                 
             if(usu.getRol().equals("Admin")){
                 request.getSession().setAttribute("Usuario", usu);
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("intento.jsp").forward(request, response);
                 }
             else if(usu.getRol().equals("usuario")){
           request.getSession().setAttribute("Usuario", usu);

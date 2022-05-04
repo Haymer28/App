@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -77,4 +78,67 @@ public class RegistroDAO {
         }
         return usu;
     }
+    
+     public boolean eliminar(int id) {
+        String sql = "delete from registro where id=" + id;
+
+        try {
+            con = cn.getConnection();
+            Statement st = con.createStatement();
+            int estado = st.executeUpdate(sql);
+            if (estado > 0) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            Logger.getLogger(RegistroDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    public Usuario cargar(int id) {
+        Usuario usu = new Usuario();
+        String sql = "select * from registro where id=" + id;
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                usu.setId(rs.getInt(1));
+                usu.setNombre(rs.getString(2));
+                usu.setCelular(rs.getString(3));
+                usu.setEmail(rs.getString(4));
+                usu.setPass(rs.getString(5));
+                usu.setRol(rs.getString(6));
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return usu;
+    }
+   
+
+   public int modificar(Usuario r) {
+
+        String sql = "UPDATE registro SET Nombres=?,Celular=?,Correo=?" + " WHERE id=?";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            
+            ps.setString(1, r.getNombre());
+            ps.setString(2, r.getCelular());
+            ps.setString(3, r.getEmail());
+            ps.setString(4, r.getPass());
+            //aca es necesario agregar el id ya que vamos a modificar mediante el id
+            ps.setInt(4, r.getId());
+
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, e);
+
+        }
+        return resultado;
+    } 
 }
