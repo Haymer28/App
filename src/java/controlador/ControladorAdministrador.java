@@ -6,11 +6,16 @@
 package controlador;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import modelo.Producto;
+import modelo.ProductoDAO;
 import modelo.RegistroDAO;
 import modelo.Usuario;
 
@@ -18,6 +23,7 @@ import modelo.Usuario;
  *
  * @author User1
  */
+@MultipartConfig
 public class ControladorAdministrador extends HttpServlet {
 
     /**
@@ -32,6 +38,8 @@ public class ControladorAdministrador extends HttpServlet {
     
     Usuario usu = new Usuario();
     RegistroDAO dao = new RegistroDAO();
+    ProductoDAO pro = new ProductoDAO();
+    Producto p = new Producto();
     int idUsr;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -73,9 +81,17 @@ public class ControladorAdministrador extends HttpServlet {
                     idUsr = Integer.parseInt(request.getParameter("id"));
 
                     dao.eliminar(idUsr);
-                    request.getRequestDispatcher("usuarios.jsp").forward(request, response);
+                    request.getRequestDispatcher("productos.jsp").forward(request, response);
                     break;
+                    
+                case "remover":
+                    idUsr = Integer.parseInt(request.getParameter("id"));
 
+                    pro.eliminar(idUsr);
+                    request.getRequestDispatcher("productos.jsp").forward(request, response);
+                    break;
+                    
+                    
                 case "carga":
                     idUsr = Integer.parseInt(request.getParameter("id"));
                     Usuario miBeans = dao.cargar(idUsr);
@@ -98,7 +114,29 @@ public class ControladorAdministrador extends HttpServlet {
 
                     request.getRequestDispatcher("usuario.jsp").forward(request, response);
                     break;
-        
+                    
+                case "Nuevo Producto":
+                request.getRequestDispatcher("agregar.jsp").forward(request, response);
+                break;
+                
+                case "Guardar":
+                String name = request.getParameter("Nombres");
+                Part part=request.getPart("Foto");
+                InputStream inputStream = part.getInputStream();
+                String des=request.getParameter("Descripcion");
+                Double cos=Double.parseDouble(request.getParameter("Precio"));
+                int stock= Integer.parseInt(request.getParameter("Stock"));
+                
+                p.setNom(name);
+                p.setFoto(inputStream);
+                p.setDes(des);
+                p.setPrecio(cos);
+                p.setStock(stock);
+                
+                pro.agregar(p);
+                
+                request.getRequestDispatcher("productos.jsp").forward(request, response);
+                break;
                     
             }
         }

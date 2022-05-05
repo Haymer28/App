@@ -6,6 +6,7 @@
 package controlador;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import modelo.Carrito;
 import modelo.Producto;
 import modelo.ProductoDAO;
@@ -74,6 +76,10 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("totalPagar", totalPagar);
                     request.getRequestDispatcher("contenido.jsp").forward(request, response);
                     break;
+                case "Nuevo":
+                request.getRequestDispatcher("agregar.jsp").forward(request, response);
+                break;
+                
                 default:
                     
                     request.getRequestDispatcher("carrito.jsp").forward(request, response);
@@ -108,13 +114,44 @@ public class Controlador extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-    }
+        
+        /**String accion=request.getParameter("accion");
+        switch(accion){
+            case "Listar":
+                List<Producto>lista=dao.Listar();
+                request.getSession().setAttribute("lista",lista);
+                request.getRequestDispatcher("formulario.jsp").forward(request, response);
+                break;
+            case "Nuevo":
+                request.getRequestDispatcher("agregar.jsp").forward(request, response);
+                break;
+            case "Guardar":
+                String nom=request.getParameter("Nombres");
+                Part part=request.getPart("Foto");
+                InputStream inputStream=part.getInputStream();
+                String des=request.getParameter("Descripcion");
+                Double cos=Double.parseDouble(request.getParameter("Precio"));
+                int stock= Integer.parseInt(request.getParameter("Stock"));
+                
+                pro.setNom(nom);
+                pro.setFoto(inputStream);
+                pro.setDes(des);
+                pro.setPrecio(cos);
+                pro.setStock(stock);
+                dao.agregar(pro);
+                
+                request.getRequestDispatcher("formulario.jsp").forward(request, response);
+                break;
+            default:
+                request.getRequestDispatcher("Controlador?accion=Listar").forward(request, response);
+                break;
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+
+    }
+       */
+    }
+    
+    
     @Override
     public String getServletInfo() {
         return "Short description";

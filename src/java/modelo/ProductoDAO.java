@@ -13,8 +13,12 @@ import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -111,6 +115,23 @@ public class ProductoDAO {
         } catch (Exception e) {
         }
         
+    }
+    
+    public boolean eliminar(int id) {
+        String sql = "delete from producto where idProducto=" + id;
+
+        try {
+            con = cn.getConnection();
+            Statement st = con.createStatement();
+            int estado = st.executeUpdate(sql);
+            if (estado > 0) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            Logger.getLogger(RegistroDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
     
 }

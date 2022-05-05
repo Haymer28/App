@@ -18,7 +18,7 @@
         </div>
         <hr>
         <br>
-        <form action="Controlador" method="POST" enctype="multipart/form-data">
+        <form action="ControladorAdministrador?menu=Usuario" method="POST" enctype="multipart/form-data">
             <label>Nombre Producto:</label>
             <input type="text" name="Nombres">
             <label>Foto:</label>
@@ -34,7 +34,7 @@
             <input type="text" name="Stock">
             
             <input type="submit" name="accion" value="Guardar">
-            <input type="submit" name="accion" value="Regresar">
+            
             
         </form>
     </center>

@@ -12,6 +12,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Productos</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     </head>
@@ -32,55 +33,57 @@
 
             </div>
         </nav>
+        <div >
+        <form action="ControladorAdministrador?menu=Usuario" method="POST">
+            <input type="submit" name="accion" value="Nuevo Producto" class="btn btn-primary">
+        </form>
+        </div>
     <center>
         <br>
         <div>
-            <form action="Controlador" method="POST">
-                <input type="submit" name="accion" value="Listar" class="btn btn-success">
-                <input type="submit" name="accion" value="Nuevo" class="btn btn-primary">
-            </form>
+
             <hr>
             <table class="table table-striped table-dark">
-                
-                    <tr>
-                        <th>ID PRODUCTO</th>
-                        <th>NOMBRES</th>
-                        <th>FOTO</th>
-                        <th>DESCRIPCION</th>
-                        <th>PRECIO</th>
-                        <th>STOCK</th>
-                        <th>ACCIONES</th>
-                    </tr>
-              
-                
-                    <%
-                        List lis = new ProductoDAO().Listar();
-                        ListIterator list =lis.listIterator();
-                        while (list.hasNext()){
-                            Producto regM = (Producto) list.next();
-                        
-                        %>
-                     <tr>
-                        <td><%= regM.getId() %></td>
-                        <td><%= regM.getNom()%></td>
-                        <td><img src="ControladorIMG?id=<%= regM.getId() %>" style="width: 150px; height: 150px; margin-top: 20px; padding: 15px;"></td>
-                        <td><%= regM.getDes()%></td>
-                        <td><%= regM.getPrecio()%></td>
-                        <td><%= regM.getStock()%></td>
-                        <td>
-                        <form action="Controlador" method="POST">
+
+                <tr>
+                    <th>ID PRODUCTO</th>
+                    <th>NOMBRES</th>
+                    <th>FOTO</th>
+                    <th>DESCRIPCION</th>
+                    <th>PRECIO</th>
+                    <th>STOCK</th>
+                    <th>ACCIONES</th>
+                </tr>
+
+
+                <%
+                    List lis = new ProductoDAO().Listar();
+                    ListIterator list = lis.listIterator();
+                    while (list.hasNext()) {
+                        Producto regM = (Producto) list.next();
+
+                %>
+                <tr>
+                    <td><%= regM.getId()%></td>
+                    <td><%= regM.getNom()%></td>
+                    <td><img src="ControladorIMG?id=<%= regM.getId()%>" style="width: 150px; height: 150px; margin-top: 20px; padding: 15px;"></td>
+                    <td><%= regM.getDes()%></td>
+                    <td><%= regM.getPrecio()%></td>
+                    <td><%= regM.getStock()%></td>
+                    <td>
+                        <form action="ControladorAdministrador?menu=Usuario" method="POST">
                             <input type="submit" name="accion" value="Editar" class="btn btn-dark">
-                            <input type="submit" name="accion" value="Eliminar" class="btn btn-danger">
+                            <a href="ControladorAdministrador?menu=Usuario&accion=remover&id=<%=regM.getId()%>" class="btn btn-danger">Eliminar</a>
                         </form> 
-                        </td>
-                    </tr>
-                    <%
-                        }
-                    %>
-                
+                    </td>
+                </tr>
+                <%
+                    }
+                %>
+
             </table>
         </div>
     </center>
-    </body>
+</body>
 </html>
 
