@@ -33,7 +33,7 @@
 
             </div>
         </nav>
-        <div >
+        <div style="margin-top: 35px; margin-bottom: 20px; margin-left: 25px; ">
         <form action="ControladorAdministrador?menu=Usuario" method="POST">
             <input type="submit" name="accion" value="Nuevo Producto" class="btn btn-primary">
         </form>
@@ -41,8 +41,6 @@
     <center>
         <br>
         <div>
-
-            <hr>
             <table class="table table-striped table-dark">
 
                 <tr>

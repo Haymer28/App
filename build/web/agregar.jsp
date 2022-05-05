@@ -9,34 +9,72 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Online Pets</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Online-Pets</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
     <center>
+        <br>
         <div>
             <h3>Agregar un Producto</h3>
         </div>
-        <hr>
         <br>
-        <form action="ControladorAdministrador?menu=Usuario" method="POST" enctype="multipart/form-data">
-            <label>Nombre Producto:</label>
-            <input type="text" name="Nombres">
-            <label>Foto:</label>
-            <input type="file" name="Foto">
-            
-            <label>Descripcion:</label>
-            <input type="text" name="Descripcion">
-            
-            <label>Precio:</label>
-            <input type="text" name="Precio">
-            
-            <label>Stock:</label>
-            <input type="text" name="Stock">
-            
-            <input type="submit" name="accion" value="Guardar">
-            
-            
-        </form>
+        <br>
+        <div class="container registro" style="margin-left: 100px;">
+            <form action="ControladorAdministrador?menu=Usuario" method="POST" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label class=""><strong>Nombre</strong></label><br>
+                        <br>
+                        <input class="form-control placeholder bg-white text-dark border border-dark" type="text" placeholder="Ingrese su Nombre" name="Nombres"><br>
+                        <br>
+                    </div>
+                    <div class="col-sm-6">
+                        <label><strong>Foto</strong></label><br>
+                        <br>
+                        <input type="file" name="Foto"><br>
+                        <br>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label class=""><strong>Descripcion</strong></label><br>
+                        <br>
+                        <input class="form-control placeholder bg-white text-dark border border-dark" type="text" placeholder="Ingrese la Descripcion" name="Descripcion"><br>
+                        <br>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class=""><strong>Precio:</strong></label><br>
+                        <br>
+                        <input class="form-control placeholder bg-white text-dark border border-dark" type="text" placeholder="Ingrese el Precio" name="Precio"><br>
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label><strong>Stock</strong></label><br>
+                        <br>
+                        <input class="form-control placeholder bg-white text-dark border border-dark" placeholder="Ingrese el Stock" name="Stock"><br>
+                        <br>
+                    </div>
+                        <div class="col-sm-6">
+                            <label></label><br>
+                            <br>
+                            <input type="submit" name="accion" value="Guardar" class="btn btn-danger">
+                            <br>
+                        </div>
+                    </div>
+                
+                 </form>
+                </div>
     </center>
-    </body>
+</body>
 </html>
