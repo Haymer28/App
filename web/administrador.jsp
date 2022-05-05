@@ -27,7 +27,7 @@
                         <a class="nav-link" href="usuarios.jsp">Usuarios</a>    
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Controlador?accion=Carro">Productos</a>
+                        <a class="nav-link" href="productos.jsp">Productos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="">Categorias</a>

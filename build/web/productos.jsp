@@ -1,8 +1,9 @@
 <%-- 
-    Document   : formulario
-    Created on : 27/04/2022, 03:15:39 PM
-    Author     : User1
+    Document   : productos.jsp
+    Created on : 5/05/2022, 08:00:23 AM
+    Author     : SAMSUNG-PC
 --%>
+
 <%@page import="modelo.Producto"%>
 <%@page import="java.util.ListIterator"%>
 <%@page import="java.util.List"%>
@@ -11,21 +12,35 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>FORM</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     </head>
     <body>
-        <%@include file="Detalles/nav-bar.jsp"%>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Online-Pets</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="administrador.jsp">Inicio<span class="sr-only">(current)</span></a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
     <center>
         <br>
         <div>
             <form action="Controlador" method="POST">
+                <input type="submit" name="accion" value="Listar" class="btn btn-success">
                 <input type="submit" name="accion" value="Nuevo" class="btn btn-primary">
             </form>
             <hr>
-            <table border=1>
+            <table class="table table-striped table-dark">
                 
                     <tr>
                         <th>ID PRODUCTO</th>
@@ -68,3 +83,4 @@
     </center>
     </body>
 </html>
+

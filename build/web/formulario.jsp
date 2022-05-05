@@ -7,7 +7,6 @@
 <%@page import="java.util.ListIterator"%>
 <%@page import="java.util.List"%>
 <%@page import="modelo.ProductoDAO"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,7 +22,6 @@
         <br>
         <div>
             <form action="Controlador" method="POST">
-                <input type="submit" name="accion" value="Listar" class="btn btn-success">
                 <input type="submit" name="accion" value="Nuevo" class="btn btn-primary">
             </form>
             <hr>
