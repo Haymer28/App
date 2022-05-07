@@ -60,10 +60,10 @@ public class ControladorAdministrador extends HttpServlet {
 
                 case "insertar":
 
-                    String nom = request.getParameter("Nombres");
-                    String cont = request.getParameter("Celular");
-                    String email = request.getParameter("Correo");
-                    String pass = request.getParameter("Password");
+                    String nom = request.getParameter("nombres");
+                    String cont = request.getParameter("celular");
+                    String email = request.getParameter("correo");
+                    String pass = request.getParameter("password");
 
                     usu.setNombre(nom);
                     usu.setCelular(cont);
@@ -72,7 +72,7 @@ public class ControladorAdministrador extends HttpServlet {
 
                     dao.insertar(usu);
 
-                    request.getRequestDispatcher("usuario.jsp").forward(request, response);
+                    request.getRequestDispatcher("usuarios.jsp").forward(request, response);
                     break;
                 default:
                     throw new AssertionError();
@@ -81,7 +81,7 @@ public class ControladorAdministrador extends HttpServlet {
                     idUsr = Integer.parseInt(request.getParameter("id"));
 
                     dao.eliminar(idUsr);
-                    request.getRequestDispatcher("productos.jsp").forward(request, response);
+                    request.getRequestDispatcher("usuarios.jsp").forward(request, response);
                     break;
                     
                 case "remover":
@@ -100,10 +100,10 @@ public class ControladorAdministrador extends HttpServlet {
                     break;
                     
                 case "modificar":
-                    String nom2 = request.getParameter("Nombres");
-                    String cont2 = request.getParameter("Celular");
-                    String email2 = request.getParameter("Correo");
-                    String pass2 = request.getParameter("Password");
+                    String nom2 = request.getParameter("nombres");
+                    String cont2 = request.getParameter("celular");
+                    String email2 = request.getParameter("correo");
+                    String pass2 = request.getParameter("password");
                     usu.setNombre(nom2);
                     usu.setCelular(cont2);
                     usu.setEmail(email2);
@@ -112,7 +112,7 @@ public class ControladorAdministrador extends HttpServlet {
                     usu.setId(idUsr);
                     dao.modificar(usu);
 
-                    request.getRequestDispatcher("usuario.jsp").forward(request, response);
+                    request.getRequestDispatcher("usuarios.jsp").forward(request, response);
                     break;
                     
                 case "Nuevo Producto":
