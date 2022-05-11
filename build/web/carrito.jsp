@@ -13,14 +13,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link rel="icon" href="img/icono.png">
+        <title>Online Pets</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     </head>
     <body>
         <%@include file="Detalles/nav-bar.jsp"%>
     <center>
-        <div class="container mt-4">
+        <div class="container mt-4" style="margin-bottom: 50px;">
             <div class="row">
                 <%
                         List lis = new ProductoDAO().Listar();
@@ -30,22 +31,22 @@
                         
                         %>
                     <div class="col-sm-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4><%= regM.getNom()%></h4>
+                        <div class="card" style="margin-top: 25px;">
+                        <div class="card-header bg-dark text-white" >
+                            <h4><strong><%= regM.getNom()%></strong></h4>
                         </div>
                         <div class="card-body">
                             
-                            <img src="ControladorIMG?id=<%= regM.getId() %>" style ="width:200px; height:200px;"><br>
+                            <img src="ControladorIMG?id=<%= regM.getId() %>" style ="width:100px; height:100px;"><br>
                             <br>
                             <i><%= regM.getPrecio()%></i>
                         </div>
-                        <div class="card-footer text-center">
+                        <div class="card-footer text-center bg-dark text-white">
                             <br>
-                            <label><%= regM.getDes()%></label>
+                            <label><strong><%= regM.getDes()%></strong></label>
                             <div>
                                 <br>
-                                <a href="Controlador?accion=AgregarCarrito&id=<%= regM.getId()%>" class="btn btn-outline-success">Agregar al Carrito</a>
+                                <a href="Controlador?accion=AgregarCarrito&id=<%= regM.getId()%>" class="btn btn-success">Agregar al Carrito</a>
                                 <a href="" class="btn btn-danger">Comprar</a>
                             </div>
                         </div>

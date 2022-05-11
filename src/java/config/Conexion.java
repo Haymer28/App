@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 //LA CONEXION CON LA BASE DE DATOS ESTA NOS AYUDA A CONOCER LA CONEXION A LA BASE DE DATOS
 public class Conexion {
     Connection con;
-    String url="jdbc:mysql://localhost/tienda";
+    String url="jdbc:mysql://localhost/bdcarritocompras";
     String usr="root";
     String pass="";
     
