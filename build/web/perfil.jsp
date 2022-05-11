@@ -58,15 +58,18 @@
                     <td>${Usuario.getEmail()}</td>
                     <td>${Usuario.getPass()}</td>
                     <td>
-                        <button id="mostrar" href="ControladorUsuario?menu=Usuario&accion=carga&id=${Usuario.getId()}" class="btn btn-warning" >
-                           Actualizar
+                        
+                        <button class="btn btn-warning" value="ControladorUsuario?menu=Usuario&accion=carga&id=${Usuario.getId()}" id="mostrar">
+                          Editar
                         </button>
+                            
+                        
                     </td>
                 </tr>
             </table>
         </div>
 
-        <div id="contenedor" class="container-fluid" style="display:none;">
+                          <div id="contenedor" class="container-fluid" style="display:none;">
             <div  class="border border-dark shadow-lg p-3 mb-5 bg-white  rounded " style="margin-top:30px; ">
                 <form action="ControladorUsuario?menu=Usuario" method="POST"> 
                     <div class="form-group d-flex">
@@ -99,6 +102,7 @@
                         <button type="submit" name="accion" value="modificar"  class="btn btn-success">
                             <i class="fas fa-edit"></i> Modificar
                         </button>
+                        
                     </center>
                 </form>
             </div>
@@ -112,3 +116,5 @@
 
     </body>
 </html>
+
+

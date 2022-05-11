@@ -79,7 +79,14 @@ public class Controlador extends HttpServlet {
                 case "Nuevo":
                 request.getRequestDispatcher("agregar.jsp").forward(request, response);
                 break;
-                
+                /**
+                 case "remover":
+                    idp = Integer.parseInt(request.getParameter("id"));
+
+                    dao.eliminar(idp);
+                    request.getRequestDispatcher("contenido.jsp").forward(request, response);
+                    break;
+                */
                 default:
                     
                     request.getRequestDispatcher("carrito.jsp").forward(request, response);
