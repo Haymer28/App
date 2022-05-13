@@ -123,7 +123,7 @@ public class RegistroDAO {
 
    public int modificar(Usuario r) {
 
-        String sql = "UPDATE registro SET Nombres=?,Celular=?,Correo=?" + " WHERE id=?";
+        String sql = "UPDATE registro SET Nombres=?,Celular=?,Correo=?,Password=?" + " WHERE id=?";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -133,7 +133,7 @@ public class RegistroDAO {
             ps.setString(3, r.getEmail());
             ps.setString(4, r.getPass());
             //aca es necesario agregar el id ya que vamos a modificar mediante el id
-            ps.setInt(4, r.getId());
+            ps.setInt(5, r.getId());
 
             ps.executeUpdate();
 

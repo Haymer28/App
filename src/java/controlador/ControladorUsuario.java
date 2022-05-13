@@ -66,8 +66,7 @@ public class ControladorUsuario extends HttpServlet {
                     request.getRequestDispatcher("perfil.jsp").forward(request, response);
                     break;
                     
-                case "modificar":
-
+               case "modificar":
                     String nom2 = request.getParameter("nombres");
                     String cont2 = request.getParameter("celular");
                     String email2 = request.getParameter("correo");
@@ -76,13 +75,14 @@ public class ControladorUsuario extends HttpServlet {
                     usu.setCelular(cont2);
                     usu.setEmail(email2);
                     usu.setPass(pass2);
-                    usu.setId(idUsr);
 
                     usu.setId(idUsr);
                     dao.modificar(usu);
-                    request.setAttribute("Usuario", usu);
+                    
+                    request.getSession().setAttribute("Usuario", usu);
                     request.getRequestDispatcher("perfil.jsp").forward(request, response);
                     break;
+                    
                     
             }
             

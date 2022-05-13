@@ -1,0 +1,21 @@
+/* AUTOMATICALLY GENERATED ON Thu May 12 18:47:08 COT 2022*/
+/* DO NOT EDIT */
+
+grant {
+  permission javax.security.jacc.WebUserDataPermission "/";
+  permission javax.security.jacc.WebResourcePermission "/";
+};
+
+grant      principal * * {
+  permission javax.security.jacc.WebRoleRefPermission "jsp", "**";
+  permission javax.security.jacc.WebRoleRefPermission "", "**";
+  permission javax.security.jacc.WebRoleRefPermission "RegistroControl", "**";
+  permission javax.security.jacc.WebRoleRefPermission "Validacion", "**";
+  permission javax.security.jacc.WebRoleRefPermission "ControladorRegistro", "**";
+  permission javax.security.jacc.WebRoleRefPermission "ControladorAdministrador", "**";
+  permission javax.security.jacc.WebRoleRefPermission "ControladorUsuario", "**";
+  permission javax.security.jacc.WebRoleRefPermission "default", "**";
+  permission javax.security.jacc.WebRoleRefPermission "ControladorIMG", "**";
+  permission javax.security.jacc.WebRoleRefPermission "Controlador", "**";
+};
+

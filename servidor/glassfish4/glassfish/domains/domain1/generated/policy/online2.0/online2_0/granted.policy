@@ -1,0 +1,21 @@
+/* AUTOMATICALLY GENERATED ON Tue May 03 22:46:08 COT 2022*/
+/* DO NOT EDIT */
+
+grant {
+  permission javax.security.jacc.WebUserDataPermission "/";
+  permission javax.security.jacc.WebResourcePermission "/";
+};
+
+grant      principal * * {
+  permission javax.security.jacc.WebRoleRefPermission "jsp", "**";
+  permission javax.security.jacc.WebRoleRefPermission "", "**";
+  permission javax.security.jacc.WebRoleRefPermission "ValidarIngreso", "**";
+  permission javax.security.jacc.WebRoleRefPermission "RegistroControl", "**";
+  permission javax.security.jacc.WebRoleRefPermission "ControladorU", "**";
+  permission javax.security.jacc.WebRoleRefPermission "ControladorUsu", "**";
+  permission javax.security.jacc.WebRoleRefPermission "ControladorCarrito", "**";
+  permission javax.security.jacc.WebRoleRefPermission "Productos", "**";
+  permission javax.security.jacc.WebRoleRefPermission "productosAgregar", "**";
+  permission javax.security.jacc.WebRoleRefPermission "default", "**";
+};
+
