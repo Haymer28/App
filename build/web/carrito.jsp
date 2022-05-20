@@ -47,7 +47,7 @@
                             <div>
                                 <br>
                                 <a href="Controlador?accion=AgregarCarrito&id=<%= regM.getId()%>" class="btn btn-success">Agregar al Carrito</a>
-                                <a href="" class="btn btn-danger">Comprar</a>
+                                <a href="Controlador?accion=comprar&id=<%= regM.getId()%>" class="btn btn-danger">Comprar</a>
                             </div>
                         </div>
                     </div> 

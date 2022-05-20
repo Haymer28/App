@@ -35,7 +35,7 @@ public class Controlador extends HttpServlet {
     int idp;
     double totalPagar=0.0;
     int cantidad=1;
-
+    Carrito car;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -51,7 +51,8 @@ public class Controlador extends HttpServlet {
         String accion=request.getParameter("accion");
             p= dao.Listar();
             switch (accion){
-                case "AgregarCarrito":
+                case "comprar":
+                    totalPagar=0.0;
                     idp = Integer.parseInt(request.getParameter("id"));
                     pro = dao.listarId(idp);
                     item=item+1;
@@ -64,8 +65,64 @@ public class Controlador extends HttpServlet {
                     car.setCantidad(cantidad);
                     car.setSubtotal(cantidad * pro.getPrecio());
                     listaCarrito.add(car);
+                    for (int i=0; i < listaCarrito.size(); i++){
+                        totalPagar = totalPagar+listaCarrito.get(i).getSubtotal();
+                    }
+                    request.setAttribute("totalPagar", totalPagar);
+                    request.setAttribute("carrito", listaCarrito);
+                    request.setAttribute("contador", listaCarrito.size());
+                    request.getRequestDispatcher("contenido.jsp").forward(request, response);
+                    break;
+                case "AgregarCarrito":
+                    int pos = 0;
+                    cantidad = 1;
+                    idp = Integer.parseInt(request.getParameter("id"));
+                    pro = dao.listarId(idp);
+                    if (listaCarrito.size()>0) {
+                        for (int i = 0; i < listaCarrito.size(); i++){
+                            if(idp == listaCarrito.get(i).getIdProducto()){
+                                pos=i;
+                            }
+                        }
+                        if (idp == listaCarrito.get(pos).getIdProducto()) {
+                            cantidad = listaCarrito.get(pos).getCantidad()+cantidad;
+                            double subtotal = listaCarrito.get(pos).getPrecioCompra()*cantidad;
+                            listaCarrito.get(pos).setCantidad(cantidad);
+                            listaCarrito.get(pos).setSubtotal(subtotal);
+                        } else {
+                           item = item+1;
+                    Carrito carro = new Carrito(); 
+                    carro.setItem(item);
+                    carro.setIdProducto(pro.getId());
+                    carro.setNombres(pro.getNom());
+                    carro.setDescripcion(pro.getDes());
+                    carro.setPrecioCompra(pro.getPrecio());
+                    carro.setCantidad(cantidad);
+                    carro.setSubtotal(cantidad * pro.getPrecio());
+                    listaCarrito.add(carro);  
+                        }
+                    } else {    
+                    item = item+1;
+                    Carrito carro = new Carrito(); 
+                    carro.setItem(item);
+                    carro.setIdProducto(pro.getId());
+                    carro.setNombres(pro.getNom());
+                    carro.setDescripcion(pro.getDes());
+                    carro.setPrecioCompra(pro.getPrecio());
+                    carro.setCantidad(cantidad);
+                    carro.setSubtotal(cantidad * pro.getPrecio());
+                    listaCarrito.add(carro); 
+                    }
                     request.setAttribute("contador", listaCarrito.size());
                     request.getRequestDispatcher("Controlador?accion=carrito").forward(request, response);
+                    break;
+                case "Delete":
+                    int idproducto = Integer.parseInt(request.getParameter("idp"));
+                    for (int i=0; i < listaCarrito.size(); i++){
+                        if (listaCarrito.get(i).getIdProducto() == idproducto) {
+                            listaCarrito.remove(i);
+                        }
+                    }
                     break;
                 case "Carrito":
                     totalPagar=0.0;
